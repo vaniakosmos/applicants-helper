@@ -1,0 +1,25 @@
+<h1>About API</h1>
+
+<ul class="endpoints">
+    {{# each endpoints}}
+        <li>
+            <div class="title">
+                <div class="verb {{ verb }}">
+                    {{ verb }}
+                </div>
+                {{ url }}
+            </div>
+            <div class="body">
+                {{{ docstring }}}
+                <!--{{# each docstrings}}-->
+                    <!--{{.}} <br>-->
+                <!--{{/each}}-->
+            </div>
+            <strong class="endpoint {{verb}}">
+
+            </strong>
+            <br>
+
+        </li>
+    {{/each}}
+</ul>
