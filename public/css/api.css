@@ -1,0 +1,42 @@
+body {
+  background: url("/images/tile1.jpg");
+}
+.endpoints > li {
+  margin-bottom: 30px;
+  list-style-type: none;
+}
+.endpoints .title {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.endpoints .verb.GET {
+  color: #00b639;
+}
+.endpoints .verb.POST {
+  color: #00B7FF;
+}
+.endpoints .verb.PUT {
+  color: #e1c700;
+}
+.endpoints .verb.DELETE {
+  color: #ce1000;
+}
+.card {
+  border-radius: 3px;
+  padding: 20px;
+  background: #e2e1e0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+.left {
+  position: fixed;
+  box-shadow: 9px 9px 30px 0 rgba(27, 196, 252, 0.3), -9px -9px 30px 0 rgba(255, 165, 0, 0.3), 3px 3px 10px 0 rgba(27, 196, 252, 0.6), -3px -3px 10px 0 rgba(255, 168, 0, 0.6);
+}
+.left > img {
+  display: block;
+  margin: auto;
+  width: 80%;
+}
+.right {
+  margin: auto;
+  width: 50%;
+}

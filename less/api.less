@@ -1,0 +1,63 @@
+body {
+  background: static("/images/tile1.jpg"); // todo: static custom function
+}
+
+//.endpoints
+
+.endpoints {
+  > li {
+    margin-bottom: 30px;
+    list-style-type: none;
+  }
+
+  .title {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  .verb {
+    &.GET {
+      color: #00b639;
+    }
+    &.POST {
+      color: #00B7FF;
+    }
+    &.PUT {
+      color: #e1c700;
+    }
+    &.DELETE {
+      color: #ce1000;
+    }
+  }
+}
+
+.card {
+  border-radius: 3px;
+  padding: 20px;
+  background: #e2e1e0;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.left {
+  position: fixed;
+
+  @offset-x: 3px;
+  @offset-y: 3px;
+  @blur: 10px;
+  @outer-rad: 0;
+  @alpha: 0.6;
+  box-shadow:
+          @offset-x*3 @offset-y*3 @blur*3 @outer-rad rgba(27, 196, 252, @alpha/2),
+            -@offset-x*3 -@offset-y*3 @blur*3 @outer-rad rgba(255, 165, 0, @alpha/2),
+          @offset-x @offset-y @blur @outer-rad rgba(27, 196, 252, @alpha),
+            -@offset-x -@offset-y @blur @outer-rad rgba(255, 168, 0, @alpha);
+  > img {
+    display: block;
+    margin: auto;
+    width: 80%;
+  }
+}
+
+.right {
+  margin: auto;
+  width: 50%;
+}

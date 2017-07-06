@@ -8,6 +8,7 @@ const handlebars = require('express-handlebars');
 
 const indexRouter = require('./routes/index');
 const apiSetup = require('./routes/api');
+const staticHelper = require('./lib/static');
 
 
 const app = express();
@@ -17,6 +18,17 @@ const app = express();
 app.engine('hbs', handlebars.create({
     defaultLayout: 'main',
     extname: '.hbs',
+    helpers: {
+        'static': function(name) {
+            return staticHelper.map(name)
+        },
+        'section': function(name, options){
+            if(!this._sections)
+                this._sections = {};
+            this._sections[name] = options.fn(this);
+            return null;
+        },
+    }
 }).engine);
 app.set('view engine', 'hbs');
 
