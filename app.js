@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
 
 const indexRouter = require('./routes/index');
-const apiRouter = require('./routes/api');
+const apiSetup = require('./routes/api');
 
 
 const app = express();
@@ -28,7 +28,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', apiRouter);
+apiSetup.setup(app);
 app.use('/', indexRouter);
 
 

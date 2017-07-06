@@ -1,15 +1,21 @@
 const express = require('express');
 const fs = require('fs');
-const Rest = require('connect-rest');
 const vhost = require('vhost');
+const cors = require('cors');
 const marked = require('marked');
 
 const router = express.Router();
-const rest = Rest.create({
+const rest = require('connect-rest').create({
     context: '',
     domain: require('domain').create()
 });
-router.use(vhost('api.*', rest.processRequest()));
+
+exports.setup = function (app) {
+    app.use(vhost('api.*', router));
+    router.use(vhost('api.*', rest.processRequest()));
+    router.use(cors());
+};
+
 
 marked.setOptions({
     "breaks": true,
@@ -27,7 +33,13 @@ router.get('/', function (req, res) {
 
 /**
  * Retrieves list of applicants based on given name.
- * Takes `limit` as querystring parameter.
+ * Takes `name` and `limit` as querystring parameters.
+ *
+ * `name` - applicant name (or part of it);
+ * `limit` (default is `5`) - output limit. Limit of limit is range between 1 and 15 (inclusively).
+ *
+ * Example of request:
+ * `applicants?name={name}&limit={limit}` [(test)](applicants?name=dude&limit=5)
  *
  * Example of response:
  * ```
@@ -41,16 +53,16 @@ router.get('/', function (req, res) {
  * }
  * ```
  * */
-rest.get('/applicant/:name', function (req, content, cb) {
+rest.get('/applicants', function (req, content, cb) {
+    let name = req.params.name || 'dude';
     let limit = parseInt(req.query.limit);
-    if (!limit || limit <= 0 && limit >= 15) {
-        limit = 5
-    }
+    if (!limit || limit <= 0 && limit > 15)
+        limit = 5;
     cb(null, {
         status: 200,
         data: {
             students: [],
-            name: req.params.name,
+            name: name,
             limit: limit,
         },
     });
@@ -80,7 +92,7 @@ rest.get('/applicant/:id', function (req, content, cb) {
 });
 
 /**
- * Retrieves specialty info and list of applicants by id.
+ * Retrieves specialty info and list of applicants by specialty id.
  * */
 rest.get('/specialty/:id', function (req, content, cb) {
     cb(null, {
@@ -94,8 +106,6 @@ rest.get('/specialty/:id', function (req, content, cb) {
     });
 });
 
-
-module.exports = router;
 
 function get_docs() {
     // match docstring and endpoint url
