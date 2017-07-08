@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "body-parser": "~1.17.1",
+    "cheerio": "^1.0.0-rc.2",
     "connect-rest": "^2.12.5",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.3",
@@ -19,6 +20,8 @@
     "marked": "^0.3.6",
     "morgan": "~1.8.1",
     "pygmentize-bundled": "^2.3.0",
+    "q": "^1.5.0",
+    "request": "^2.81.0",
     "serve-favicon": "~2.4.2",
     "vhost": "^3.0.2"
   },
