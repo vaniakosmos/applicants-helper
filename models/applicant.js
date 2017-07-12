@@ -16,6 +16,7 @@ const applicantSchema = new Schema({
  * @typedef {Object} Model.Application
  * @property {Object} _id
  * @property {Object} spec_id
+ * @property {Object} applicant_id
  * @property {Number} pos
  * @property {Number} actualPos
  * @property {float} score
@@ -23,6 +24,7 @@ const applicantSchema = new Schema({
  */
 const applicationSchema = new Schema({
     spec_id: Schema.Types.ObjectId,
+    applicant_id: Schema.Types.ObjectId,
     pos: Number,
     actualPos: Number,
     name:  String,
