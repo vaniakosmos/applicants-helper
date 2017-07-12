@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 /**
  * @typedef {Object} Model.Univ
+ * @property {Object} _id
  * @property {String} url
  * @property {String} name
  */

@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 
 /**
  * @typedef {Object} Model.Spec
+ * @property {Object} _id
  * @property {String} url
  * @property {String} name
  * @property {String} specialty
@@ -19,6 +20,7 @@ const specSchema = new mongoose.Schema({
     level: String,
     lo: Number,
     dz: Number,
+    faculty_id: mongoose.Schema.Types.ObjectId,
 });
 
 const Spec = mongoose.model('Spec', specSchema);
