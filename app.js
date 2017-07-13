@@ -6,6 +6,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
 
+require('dotenv').config({path: '.env'});
+const database = require('./lib/database');
+
 const indexRouter = require('./routes/index');
 const apiSetup = require('./routes/api');
 const staticHelper = require('./lib/static');
