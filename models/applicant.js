@@ -21,7 +21,6 @@ const applicantSchema = new Schema({
  * @property {Number} actualPos
  * @property {float} score
  * @property {Boolean} doc
- * @property {Date} lastUpdate
  * @property {Boolean} changedPos
  */
 const applicationSchema = new Schema({
@@ -32,7 +31,6 @@ const applicationSchema = new Schema({
     name:  String,
     score: Number,
     doc: Boolean,
-    lastUpdate: Date,
     changedPos: Boolean,
 });
 

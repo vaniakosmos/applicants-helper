@@ -10,6 +10,7 @@ const mongoose = require('mongoose');
  * @property {String} level
  * @property {int} lo - licensed volume
  * @property {int} dz - volume of the state order
+ * @property {Date} lastUpdate
  */
 
 const specSchema = new mongoose.Schema({
@@ -20,6 +21,7 @@ const specSchema = new mongoose.Schema({
     level: String,
     lo: Number,
     dz: Number,
+    lastUpdate: Date,
     faculty_id: mongoose.Schema.Types.ObjectId,
 });
 
