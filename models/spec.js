@@ -21,7 +21,7 @@ const specSchema = new mongoose.Schema({
     level: String,
     lo: Number,
     dz: Number,
-    lastUpdate: Date,
+    lastUpdate: {type: Date, default: new Date()},
     faculty_id: mongoose.Schema.Types.ObjectId,
 });
 

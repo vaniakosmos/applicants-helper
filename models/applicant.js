@@ -8,9 +8,9 @@ const Schema = mongoose.Schema;
  * @property {Array.<Model.Application>} applications
  */
 const applicantSchema = new Schema({
-    name:  String,
-    applications: [{type: Schema.Types.ObjectId, ref: 'Application'}]
+    name: String,
 });
+const Applicant = mongoose.model('Applicant', applicantSchema);
 
 /**
  * @typedef {Object} Model.Application
@@ -28,13 +28,11 @@ const applicationSchema = new Schema({
     applicant_id: Schema.Types.ObjectId,
     pos: Number,
     actualPos: Number,
-    name:  String,
+    name: String,
     score: Number,
     doc: Boolean,
-    changedPos: Boolean,
+    changedPos: {type: Boolean, default: false},
 });
-
-const Applicant = mongoose.model('Applicant', applicantSchema);
 const Application = mongoose.model('Application', applicationSchema);
 
 module.exports = {
