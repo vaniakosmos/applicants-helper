@@ -3,8 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "start-cluster": "echo 'nope'"
+    "server start": "node ./bin/www",
+    "server start cluster": "echo 'nope'",
+    "db check": "node ./lib/database.js check",
+    "db populate": "node ./lib/database.js populate",
+    "db update": "node ./lib/database.js update",
+    "db calc actual positions": "node ./lib/database.js calcpos",
+    "db drop": "node ./lib/database.js dropdatabase",
+    "tests": "echo 'nope'"
   },
   "dependencies": {
     "body-parser": "~1.17.1",
