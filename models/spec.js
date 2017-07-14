@@ -1,8 +1,11 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    ObjectId = Schema.Types.ObjectId;
 
 /**
  * @typedef {Object} Model.Spec
- * @property {Object} _id
+ * @property {ObjectId} _id
+ * @property {ObjectId} faculty_id
  * @property {String} url
  * @property {String} name
  * @property {String} specialty
@@ -13,7 +16,7 @@ const mongoose = require('mongoose');
  * @property {Date} lastUpdate
  */
 
-const specSchema = new mongoose.Schema({
+const specSchema = new Schema({
     url: String,
     name:  String,
     specialty: String,
@@ -22,7 +25,7 @@ const specSchema = new mongoose.Schema({
     lo: Number,
     dz: Number,
     lastUpdate: {type: Date, default: new Date()},
-    faculty_id: mongoose.Schema.Types.ObjectId,
+    faculty_id: {type: ObjectId, ref: 'Faculty'},
 });
 
 const Spec = mongoose.model('Spec', specSchema);

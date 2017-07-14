@@ -1,22 +1,24 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    ObjectId = Schema.Types.ObjectId;
 
 /**
  * @typedef {Object} Model.Applicant
- * @property {Object} _id
+ * @property {ObjectId} _id
  * @property {String} name
- * @property {Array.<Model.Application>} applications
+ * @property {ObjectId[]} applications
  */
 const applicantSchema = new Schema({
     name: String,
+    applications: [{type: ObjectId, ref: 'Application'}]
 });
 const Applicant = mongoose.model('Applicant', applicantSchema);
 
 /**
  * @typedef {Object} Model.Application
- * @property {Object} _id
- * @property {Object} spec_id
- * @property {Object} applicant_id
+ * @property {ObjectId} _id
+ * @property {ObjectId} spec_id
+ * @property {ObjectId} applicant_id
  * @property {Number} pos
  * @property {Number} actualPos
  * @property {float} score
@@ -24,11 +26,10 @@ const Applicant = mongoose.model('Applicant', applicantSchema);
  * @property {Boolean} changedPos
  */
 const applicationSchema = new Schema({
-    spec_id: Schema.Types.ObjectId,
-    applicant_id: Schema.Types.ObjectId,
+    spec_id: {type: ObjectId, ref: 'Spec'},
+    applicant_id: {type: ObjectId, ref: 'Applicant'},
     pos: Number,
     actualPos: Number,
-    name: String,
     score: Number,
     doc: Boolean,
     changedPos: {type: Boolean, default: false},

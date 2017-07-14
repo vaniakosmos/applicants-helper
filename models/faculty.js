@@ -1,16 +1,18 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'),
+    Schema = mongoose.Schema,
+    ObjectId = Schema.Types.ObjectId;
 
 /**
  * @typedef {Object} Model.Faculty
- * @property {Object} _id
+ * @property {ObjectId} _id
  * @property {String} url
  * @property {String} name
  */
 
-const facultySchema = new mongoose.Schema({
+const facultySchema = new Schema({
     url: String,
     name:  String,
-    univ_id: mongoose.Schema.Types.ObjectId,
+    univ_id: {type: ObjectId, ref: 'Univ'},
 });
 
 const Faculty = mongoose.model('Faculty', facultySchema);
