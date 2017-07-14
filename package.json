@@ -5,6 +5,7 @@
   "scripts": {
     "server start": "node ./bin/www",
     "server start cluster": "echo 'nope'",
+    "db stats": "node ./lib/database.js stats",
     "db check": "node ./lib/database.js check",
     "db populate": "node ./lib/database.js populate",
     "db update": "node ./lib/database.js update",
