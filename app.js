@@ -6,7 +6,6 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
 
-// require('dotenv').config({path: '.env'});
 const database = require('./lib/database');
 
 const indexRouter = require('./routes/index');
@@ -43,7 +42,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-apiSetup.setup(app);
+// apiSetup.setup(app);
 app.use('/', indexRouter);
 
 
@@ -56,15 +55,13 @@ app.use(function (req, res, next) {
 
 
 // error handler
-app.use(function (err, req, res) {
-    // set locals, only providing error in development
-    console.log('error');
-    res.locals.message = err.message;
-    res.locals.error = req.app.get('env') === 'development' ? err : {};
-
-    // render the error page
-    res.status(err.status || 500);
-    res.render('error');
+app.use(function (err, req, res, next) {
+    err.status = err.status || 500;
+    res.status(err.status);
+    res.render('error', {
+        message: err.message,
+        error: req.app.get('env') === 'development' ? err : {},
+    });
 });
 
 module.exports = app;
