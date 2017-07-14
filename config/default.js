@@ -1,3 +1,6 @@
+require('dotenv').config({path: __dirname + '/../.env'});
+
+
 module.exports = {
     debug: process.env['DEBUG'],
     db: {
