@@ -1,0 +1,45 @@
+<script id="search-template" type="text/x-handlebars-template">
+
+    {{#if applicants}}
+        <div class="card">
+            <h3>Applicants:</h3>
+            {{#each applicants}}
+                <p><a href="{{url}}">{{name}}</a></p>
+            {{/each}}
+        </div>
+    {{/if}}
+    {{#if univs}}
+        <div class="card">
+            <h3>Univs:</h3>
+            {{#each univs}}
+                <p><a href="{{url}}">{{name}}</a></p>
+            {{/each}}
+        </div>
+    {{/if}}
+    {{#if faculties}}
+        <div class="card">
+            <h3>Faculties:</h3>
+            {{#each faculties}}
+                <p><a href="{{url}}">{{name}}</a></p>
+            {{/each}}
+        </div>
+    {{/if}}
+    {{#if specs}}
+        <div class="card">
+            <h3>Specialities:</h3>
+            {{#each specs}}
+                <p><a href="{{url}}">{{name}}</a></p>
+                <ul>
+                    <li>Form: {{form}}</li>
+                    <li>Level: {{level}}</li>
+                </ul>
+            {{/each}}
+        </div>
+    {{/if}}
+    {{#if empty}}
+        <div class="card">
+            <p>No results</p>
+        </div>
+    {{/if}}
+
+</script>
