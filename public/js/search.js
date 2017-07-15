@@ -2,9 +2,7 @@ $(document).ready(function () {
     const source = $("#search-template").html();
     const template = Handlebars.compile(source);
 
-    $('#search-btn').click(function (e) {
-        console.log('search');
-        e.preventDefault();
+    function search() {
         $.ajax({
             type: "GET",
             url: "/search",
@@ -14,5 +12,16 @@ $(document).ready(function () {
                 $('#search-result').html(html);
             }
         });
+    }
+
+    $('#search-btn').click(function () {
+        search();
+        return false;
     });
+    $("#search").keypress(function (e) {
+        if (e.which === 13) {
+            search();
+            return false;
+        }
+    })
 });
