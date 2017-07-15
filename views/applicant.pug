@@ -1,0 +1,48 @@
+extends layouts/main
+
+block head
+
+
+block content
+    .container
+        .card
+            h1 Applicant info
+            h3= applicant.name
+
+        .card.table-container
+            table#applications
+                thead
+                    th Specialization
+                    th Score
+                    th Position
+                    th Actual position
+                    th dz
+                    th lo
+                    th Document
+                tbody
+                    each application in applications
+                        - var spec = application.spec
+                        tr
+                            td
+                                small= spec.specialty
+                                br
+                                a(href=spec.url) #{spec.name}
+                                |
+                                |
+                                a(href=spec.oUrl) (knu.ua)
+                                br
+                                small #{spec.level}, #{spec.form}
+                            td= application.score
+                            td= application.pos
+                            td= application.actualPos
+                            td= spec.dz
+                            td= spec.lo
+                            td
+                                if application.doc
+                                    | +
+                                else
+                                    | -
+
+
+block scripts
+

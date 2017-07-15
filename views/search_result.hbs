@@ -2,37 +2,39 @@
 
     {{#if applicants}}
         <div class="card">
-            <h3>Applicants:</h3>
+            <h3>Applicants</h3>
             {{#each applicants}}
-                <p><a href="{{url}}">{{name}}</a></p>
+                <a href="{{url}}">{{name}}</a>
             {{/each}}
         </div>
     {{/if}}
     {{#if univs}}
         <div class="card">
-            <h3>Univs:</h3>
+            <h3>Univs</h3>
             {{#each univs}}
-                <p><a href="{{url}}">{{name}}</a></p>
+                <a href="{{url}}">{{name}}</a>
             {{/each}}
         </div>
     {{/if}}
     {{#if faculties}}
         <div class="card">
-            <h3>Faculties:</h3>
+            <h3>Faculties</h3>
             {{#each faculties}}
-                <p><a href="{{url}}">{{name}}</a></p>
+                <a href="{{url}}">{{name}}</a>
             {{/each}}
         </div>
     {{/if}}
     {{#if specs}}
         <div class="card">
-            <h3>Specialities:</h3>
+            <h3>Specialities</h3>
             {{#each specs}}
-                <p><a href="{{url}}">{{name}}</a></p>
-                <ul>
-                    <li>Form: {{form}}</li>
-                    <li>Level: {{level}}</li>
-                </ul>
+                <a href="{{url}}">
+                    {{name}}
+                    <ul>
+                        <li>Form: {{form}}</li>
+                        <li>Level: {{level}}</li>
+                    </ul>
+                </a>
             {{/each}}
         </div>
     {{/if}}
