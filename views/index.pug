@@ -1,0 +1,21 @@
+extends layouts/main
+
+block head
+    link(rel="stylesheet" href="/css/search.min.css")
+    link(rel='stylesheet' href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
+    include search_result.hbs
+
+block content
+    .container
+        .card
+            h1 Abit Helper
+            .search-box
+                .search-container
+                    span.icon: i.fa.fa-search
+                    input(type="search" id="search" placeholder="Іванов Іван Іванович..." value="шев")
+                button#search-btn(type="button") Search
+
+        #search-result
+
+block scripts
+    script(src='js/search.js')
