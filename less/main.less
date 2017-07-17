@@ -1,15 +1,136 @@
+@main: #f0f0f0;
+
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 50px;
+    font: 16px arial, sans-serif;
+    background: lighten(@main, 10%);
 }
 
 a {
   color: #00B7FF;
 }
 
-.card {
-  border-radius: 3px;
-  padding: 20px;
-  background: #e2e1e0;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+
+.card-like {
+    border-radius: 3px;
+    padding: 3px;
+    background: @main;
 }
+
+.shadow(@length) {
+    box-shadow: 0 @length*1.8 @length*3 rgba(0, 0, 0, 0.19), 0 @length @length rgba(0, 0, 0, 0.23);
+}
+
+.card {
+    .card-like;
+    padding: 20px;
+    .shadow(3px);
+    margin-bottom: 10px;
+}
+
+.container {
+    margin: auto;
+    width: 70%;
+    @height: 50px;
+
+    #search-result .card {
+        margin-top: 20px;
+        a {
+            .card-like;
+            display: block;
+            text-decoration: none;
+            padding: 10px;
+            font: inherit;
+            color: darken(@main, 80%);
+
+            &:hover {
+                background: darken(@main, 10%);
+            }
+        }
+    }
+
+    .search-box {
+        .search-container {
+            width: 79%;
+            display: inline-block;
+            vertical-align: middle;
+            white-space: nowrap;
+            position: relative;
+            margin-right: 5px;
+
+            .icon {
+                position: absolute;
+                margin-left: 20px;
+                margin-top: 15px;
+                z-index: 1;
+                color: darken(@main, 80%);
+            }
+
+            .setStuff {
+                outline: none;
+                background: lighten(@main, 20%);
+            }
+
+            input {
+                .card-like;
+                background: lighten(@main, 3%);
+                width: 100%;
+                height: @height;
+                border: none;
+                font-size: 10pt;
+                color: darken(@main, 80%);
+                padding-left: 50px;
+                transition: width .2s ease, box-shadow .3s ease, background .3s ease;
+
+                &:focus, &:active, &:not(:placeholder-shown) {
+                    .setStuff();
+                }
+            }
+
+            &:hover {
+                input {
+                    .setStuff()
+                }
+            }
+        }
+
+        button {
+            .card-like;
+            background: darken(@main, 10%);
+            width: 19%;
+            height: @height;
+            border: none;
+            font-size: 0.9em;
+            vertical-align: middle;
+            color: #000000;
+
+            &:hover {
+                background: darken(@main, 20%);
+            }
+
+            &:focus {
+                outline: none;
+            }
+
+            &:active {
+                background: darken(@main, 30%);
+            }
+        }
+    }
+}
+
+.table-container {
+    overflow-x: auto;
+    #applications {
+        width: 100%;
+        border-collapse: collapse;
+        th, td {
+            border: 1px solid darken(@main, 50%);
+            padding: 10px;
+        }
+        tbody tr:hover {
+            background: darken(@main, 5%);
+        }
+    }
+}
+
