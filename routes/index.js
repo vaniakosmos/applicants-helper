@@ -33,18 +33,18 @@ function getByIdAndRender(view, apiFunc, hook) {
     }
 }
 
-router.get('/univs', getByIdAndRender('', api.getUnivs));
+router.get('/univs', getByIdAndRender('univs', api.getUnivs));
 
-router.get('/univ/:id', getByIdAndRender('', api.getFaculties, function (req) {
+router.get('/univs/:id', getByIdAndRender('univ', api.getFaculties, function (req) {
     const id = req.params['id'];
     console.log('univs_id:', id);
 }));
 
-router.get('/faculty/:id', getByIdAndRender('', api.getSpecs));
+router.get('/faculties/:id', getByIdAndRender('faculty', api.getSpecs));
 
-router.get('/specialization/:id', getByIdAndRender('', api.getApplications));
+router.get('/specializations/:id', getByIdAndRender('spec', api.getApplications));
 
-router.get('/applicant/:id', getByIdAndRender('applicant', api.getApplicant));
+router.get('/applicants/:id', getByIdAndRender('applicant', api.getApplicant));
 
 router.get('/search', function (req, res, next) {
     if (req.xhr) {

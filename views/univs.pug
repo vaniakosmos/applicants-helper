@@ -1,0 +1,22 @@
+extends layouts/main
+
+block head
+
+
+block content
+    h1 Universities
+
+    div#search
+        //- todo
+
+    div#univs
+        - var univs = locals.univs
+        each univ in univs
+            div
+                a(href=univ.url) #{univ.name}
+                |
+                |
+                a(href=univ.oUrl) (original)
+
+
+block scripts

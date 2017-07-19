@@ -1,0 +1,19 @@
+extends layouts/main
+
+block head
+
+
+block content
+    - var {univ, faculties} = locals
+    h1=univ.name
+
+    div#faculties
+        each faculty in faculties
+            div
+                a(href=faculty.url) #{faculty.name}
+                |
+                |
+                a(href=faculty.oUrl) (original)
+
+
+block scripts

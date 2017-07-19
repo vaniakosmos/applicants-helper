@@ -1,0 +1,36 @@
+extends layouts/main
+
+block head
+
+
+block content
+    - var {univ, faculty, specs} = locals
+    h1= faculty.name
+    h2= univ.name
+
+    div#specs
+        table
+            thead
+                th Specialization
+                th Volumes
+                th Last update
+                th links
+            tbody
+                each spec in specs
+                    tr
+                        td
+                            p Name #{spec.name}
+                            p
+                                small
+                                | Spec: #{spec.specialty}
+                                | Form: #{spec.form}, level: #{spec.level}
+                        td lo: #{spec.lo} / dz: #{spec.dz}
+                        td= spec.lastUpdate
+                        td
+                            a(href=spec.url) this
+                            |
+                            |
+                            a(href=spec.oUrl) original
+
+
+block scripts

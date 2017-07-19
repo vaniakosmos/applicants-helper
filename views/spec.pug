@@ -1,0 +1,41 @@
+extends layouts/main
+
+block head
+
+
+block content
+    - var {univ, faculty, spec, applications} = locals
+    h1= spec.name
+    h2= univ.name
+    h2= faculty.name
+
+    div#info
+        p Specialty: #{spec.specialty}
+        p Form: #{spec.form}
+        p Level: #{spec.level}
+        p lo: #{spec.lo}
+        p dz: #{spec.dz}
+        p Last update: #{spec.lastUpdate}
+
+    dev#applications
+        table
+            theadgit
+                th Position
+                th Actual position
+                th Name
+                th Score
+                th Doc
+            tbody
+                each application in applications
+                    tr
+                        td= application.pos
+                        td= application.actualPos
+                        td= application.name
+                        td= application.score
+                        td= application.doc
+                        td
+                            a(href=application.applicantUrl) this
+                            //- todo: a(href=application.spec_with_doc_url) specialisation with this dude original docs
+
+
+block scripts
