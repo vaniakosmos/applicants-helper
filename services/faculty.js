@@ -1,17 +1,9 @@
+const Univ = require('../models/univ');
 const Faculty = require('../models/faculty');
+
 const {errorHandler} = require('./utils');
-const {specMapper} = require('./spec');
+const mapper = require('./mappers');
 
-
-function facultyMapper(faculty) {
-    return {
-        name: faculty.name,
-        oUrl: faculty.oUrl,
-        url: faculty.url,
-    }
-}
-
-exports.facultyMapper = facultyMapper;
 
 /**
  * @returns {Promise}
@@ -20,10 +12,12 @@ exports.getFaculty = function (id) {
     return Faculty
         .findById(id)
         .populate('specs')
-        .then(function (faculty) {
+        .then(async function (faculty) {
+            const univ = await Univ.findById(faculty.univ);
             return {
-                faculty: facultyMapper(faculty),
-                specs: faculty.specs.map(specMapper)
+                univ: mapper.univ(univ),
+                faculty: mapper.faculty(faculty),
+                specs: faculty.specs.map(mapper.spec)
             }
         })
         .catch(errorHandler)

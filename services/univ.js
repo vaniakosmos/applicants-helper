@@ -1,17 +1,8 @@
 const Univ = require('../models/univ');
+
 const {errorHandler} = require('./utils');
-const {facultyMapper} = require('./faculty');
+const mapper = require('./mappers');
 
-
-function univMapper(univ) {
-    return {
-        name: univ.name,
-        oUrl: univ.oUrl,
-        url: univ.url,
-    }
-}
-
-exports.univMapper = univMapper;
 
 /**
  * @returns {Promise}
@@ -22,8 +13,8 @@ exports.getUniv = function (id) {
         .populate('faculties')
         .then(function (univ) {
             return {
-                univ: univMapper(univ),
-                faculties: univ.faculties.map(facultyMapper),
+                univ: mapper.univ(univ),
+                faculties: univ.faculties.map(mapper.faculty),
             }
         })
         .catch(errorHandler)
@@ -38,7 +29,7 @@ exports.getListOfUnivs = function () {
         .find()
         .then(function (univs) {
             return {
-                univs: univs.map(univMapper)
+                univs: univs.map(mapper.univ)
             }
         })
         .catch(errorHandler)

@@ -3,13 +3,10 @@ const Q = require('q');
 const Univ = require('../models/univ');
 const Faculty = require('../models/faculty');
 const Spec = require('../models/spec');
-const Applicant = require('../models/applicant').Applicant;
+const Applicant = require('../models/applicant');
 
-const {univMapper} = require('./univ');
-const {facultyMapper} = require('./faculty');
-const {specMapper} = require('./spec');
-const {applicantMapper} = require('./applicant');
 const {errorHandler} = require('./utils');
+const mapper = require('./mappers');
 
 
 exports.search = function search(query, limit = 5) {
@@ -19,7 +16,7 @@ exports.search = function search(query, limit = 5) {
     const findNameUrl = {
         '$or': [
             findName,
-            {url: {$regex: regex}},
+            {oUrl: {$regex: regex}},
         ]
     };
     const options = {limit: limit};
@@ -35,10 +32,10 @@ exports.search = function search(query, limit = 5) {
         })
         .then(function (res) {
             return {
-                univs: res[0].map(univMapper),
-                faculties: res[1].map(facultyMapper),
-                specs: res[2].map(specMapper),
-                applicants: res[3].map(applicantMapper),
+                univs: res[0].map(mapper.univ),
+                faculties: res[1].map(mapper.faculty),
+                specs: res[2].map(mapper.spec),
+                applicants: res[3].map(mapper.applicant),
                 empty: !(res[0].length || res[1].length || res[2].length || res[3].length)
             }
         })
