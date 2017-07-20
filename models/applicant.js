@@ -14,7 +14,7 @@ const applicantSchema = new Schema({
 });
 
 applicantSchema.virtual('url').get(function () {
-    return `applicants/${this._id}`
+    return `/applicants/${this._id}`
 });
 
 const Applicant = mongoose.model('Applicant', applicantSchema);

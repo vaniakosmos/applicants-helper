@@ -18,7 +18,7 @@ const facultySchema = new Schema({
 });
 
 facultySchema.virtual('url').get(function () {
-    return `faculties/${this._id}`
+    return `/faculties/${this._id}`
 });
 
 const Faculty = mongoose.model('Faculty', facultySchema);

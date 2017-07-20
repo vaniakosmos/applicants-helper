@@ -16,7 +16,7 @@ const univSchema = new Schema({
 });
 
 univSchema.virtual('url').get(function () {
-    return `univs/${this._id}`
+    return `/univs/${this._id}`
 });
 
 const Univ = mongoose.model('Univ', univSchema);

@@ -18,7 +18,7 @@ const mongoose = require('mongoose'),
  */
 const specSchema = new Schema({
     oUrl: String,
-    name:  {type: String, required: true, max: 100, trim: true},
+    name: {type: String, required: true, max: 100, trim: true},
     specialty: String,
     form: String,
     level: String,
@@ -30,7 +30,7 @@ const specSchema = new Schema({
 });
 
 specSchema.virtual('url').get(function () {
-    return `specs/${this._id}`
+    return `/specs/${this._id}`
 });
 
 const Spec = mongoose.model('Spec', specSchema);
