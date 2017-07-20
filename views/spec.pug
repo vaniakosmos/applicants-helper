@@ -27,15 +27,19 @@ block content
                 th Doc
             tbody
                 each application in applications
+                    - var applicant = application.applicant
                     tr
                         td= application.pos
                         td= application.actualPos
-                        td= application.name
-                        td= application.score
-                        td= application.doc
                         td
-                            a(href=application.applicantUrl) this
-                            //- todo: a(href=application.spec_with_doc_url) specialisation with this dude original docs
+                            a(href=applicant.url)= applicant.name
+                        td= application.score
+                        td
+                            if application.doc
+                                | +
+                            else
+                                | -
+                        //- todo: a(href=application.spec_with_doc_url) specialisation with this dude original docs
 
 
 block scripts
