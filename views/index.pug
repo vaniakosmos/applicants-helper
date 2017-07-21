@@ -13,6 +13,21 @@ block content
                     span.icon: i.fa.fa-search
                     input(type="search" id="search" placeholder="Іванов Іван Іванович..." value="шев")
                 button#search-btn(type="button") Search
+                form#search-types
+                    input#searchType1(type="radio" name="search-type" value="dudes" checked='checked')
+                    label(for="searchType1") Applicants
+                    |
+                    |
+                    input#searchType2(type="radio" name="search-type" value="univs")
+                    label(for="searchType2") Universities
+                    |
+                    |
+                    input#searchType3(type="radio" name="search-type" value="faculties")
+                    label(for="searchType3") Faculties
+                    |
+                    |
+                    input#searchType4(type="radio" name="search-type" value="specs")
+                    label(for="searchType4") Specializations
 
         #search-result
 

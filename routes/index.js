@@ -16,7 +16,7 @@ router.get('/univs/:id', univController.getUniv);
 
 router.get('/faculties/:id', facultyController.getFaculty);
 
-router.get('/specializations/:id', specController.getSpec);
+router.get('/specs/:id', specController.getSpec);
 
 router.get('/applicants/:id', applicantController.getApplicant);
 

@@ -1,3 +1,4 @@
+const Q = require('q');
 const Univ = require('../models/univ');
 const Faculty = require('../models/faculty');
 
@@ -21,4 +22,30 @@ exports.getFaculty = function (id) {
             }
         })
         .catch(errorHandler)
+};
+
+
+exports.search = function (query, limit = 5) {
+    const options = {
+        limit: limit
+    };
+    return Q
+        .fcall(function () {
+            return new RegExp(query, 'i');
+        })
+        .then(function (regex) {
+            return Faculty
+                .find({
+                    name: {$regex: regex}
+                }, {}, options)
+        })
+        .catch(function (err) {
+            console.error(err);
+            return []
+        })
+        .then(function (faculties) {
+            return {
+                faculties: faculties.map(mapper.faculty),
+            }
+        })
 };

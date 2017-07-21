@@ -1,3 +1,4 @@
+const Q = require('q');
 const Univ = require('../models/univ');
 
 const {errorHandler} = require('./utils');
@@ -33,4 +34,31 @@ exports.getListOfUnivs = function () {
             }
         })
         .catch(errorHandler)
+};
+
+
+exports.search = function (query, limit = 5) {
+    const options = {
+        limit: limit,
+    };
+    console.log('univs');
+    return Q
+        .fcall(function () {
+            return new RegExp(query, 'i');
+        })
+        .then(function (regex) {
+            return Univ
+                .find({
+                    name: {$regex: regex}
+                }, {}, options)
+        })
+        .catch(function (err) {
+            console.error(err);
+            return []
+        })
+        .then(function (univs) {
+            return {
+                univs: univs.map(mapper.univ),
+            }
+        })
 };

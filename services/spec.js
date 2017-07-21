@@ -43,3 +43,29 @@ exports.getSpec = function (id) {
         })
         .catch(errorHandler)
 };
+
+
+exports.search = function (query, limit = 5) {
+    const options = {
+        limit: limit
+    };
+    return Q
+        .fcall(function () {
+            return new RegExp(query, 'i');
+        })
+        .then(function (regex) {
+            return Spec
+                .find({
+                    name: {$regex: regex}
+                }, {}, options)
+        })
+        .catch(function (err) {
+            console.error(err);
+            return []
+        })
+        .then(function (specs) {
+            return {
+                specs: specs.map(mapper.spec),
+            }
+        })
+};
