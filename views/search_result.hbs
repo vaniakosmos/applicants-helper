@@ -1,47 +1,35 @@
-<script id="search-template" type="text/x-handlebars-template">
+<script id="search-dudes-template" type="text/x-handlebars-template">
+    {{#each applicants}}
+        <a href="{{url}}">{{name}}</a>
+    {{else}}
+        (╯°□°）╯︵ ┻━┻
+    {{/each}}
+</script>
 
-    {{#if applicants}}
-        <div class="card">
-            <h3>Applicants</h3>
-            {{#each applicants}}
-                <a href="{{url}}">{{name}}</a>
-            {{/each}}
-        </div>
-    {{/if}}
-    {{#if univs}}
-        <div class="card">
-            <h3>Univs</h3>
-            {{#each univs}}
-                <a href="{{url}}">{{name}}</a>
-            {{/each}}
-        </div>
-    {{/if}}
-    {{#if faculties}}
-        <div class="card">
-            <h3>Faculties</h3>
-            {{#each faculties}}
-                <a href="{{url}}">{{name}}</a>
-            {{/each}}
-        </div>
-    {{/if}}
-    {{#if specs}}
-        <div class="card">
-            <h3>Specialities</h3>
-            {{#each specs}}
-                <a href="{{url}}">
-                    {{name}}
-                    <ul>
-                        <li>Form: {{form}}</li>
-                        <li>Level: {{level}}</li>
-                    </ul>
-                </a>
-            {{/each}}
-        </div>
-    {{/if}}
-    {{#if empty}}
-        <div class="card">
-            <p>No results</p>
-        </div>
-    {{/if}}
+<script id="search-univs-template" type="text/x-handlebars-template">
+    {{#each univs}}
+        <a href="{{url}}">{{name}}</a>
+    {{else}}
+        (┛◉Д◉)┛彡┻━┻
+    {{/each}}
+</script>
 
+<script id="search-faculties-template" type="text/x-handlebars-template">
+    {{#each faculties}}
+        <a href="{{url}}">{{name}}</a>
+    {{else}}
+        (╯ರ ~ ರ）╯︵ ┻━┻
+    {{/each}}
+</script>
+
+<script id="search-specs-template" type="text/x-handlebars-template">
+    {{#each specs}}
+        <a href="{{url}}">
+            <strong>{{name}}</strong>
+            <br>
+            <small>{{level}}, {{form}}</small>
+        </a>
+    {{else}}
+        (ﾉ´･ω･)ﾉ ﾐ ┸━┸
+    {{/each}}
 </script>

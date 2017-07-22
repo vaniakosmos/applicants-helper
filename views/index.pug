@@ -1,21 +1,51 @@
 extends layouts/main
 
 block head
-    link(rel="stylesheet" href="/css/search.min.css")
     link(rel='stylesheet' href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
+    link(rel='stylesheet' href='/css/spinner.min.css')
+    link(rel='stylesheet' href='/css/search.min.css')
     include search_result.hbs
 
 block content
-    .container
-        .card
+    div.container
+        div.card
             h1 Abit Helper
-            .search-box
-                .search-container
+            div.search-box
+                div.search-container
                     span.icon: i.fa.fa-search
-                    input(type="search" id="search" placeholder="Іванов Іван Іванович..." value="шев")
-                button#search-btn(type="button") Search
+                    input(type="search" id="search" placeholder="Іванов Іван Іванович...")
+                button(type="button")#search-btn Search
+                form#search-types.button-radios
+                    input#searchType1(type="radio" name="search-type" value="dudes" checked='checked')
+                    label(for="searchType1").card-like Абітурієнти
+                    |
+                    |
+                    input#searchType2(type="radio" name="search-type" value="univs")
+                    label(for="searchType2").card-like Університети
+                    |
+                    |
+                    input#searchType3(type="radio" name="search-type" value="faculties")
+                    label(for="searchType3").card-like Факультети
+                    |
+                    |
+                    input#searchType4(type="radio" name="search-type" value="specs")
+                    label(for="searchType4").card-like Спеціальності
 
-        #search-result
+        div#search-result.card.card-links-container
+        div.loader(style="display: none;")
+            div.sk-circle
+                div.sk-circle1.sk-child
+                div.sk-circle2.sk-child
+                div.sk-circle3.sk-child
+                div.sk-circle4.sk-child
+                div.sk-circle5.sk-child
+                div.sk-circle6.sk-child
+                div.sk-circle7.sk-child
+                div.sk-circle8.sk-child
+                div.sk-circle9.sk-child
+                div.sk-circle10.sk-child
+                div.sk-circle11.sk-child
+                div.sk-circle12.sk-child
 
 block scripts
     script(src='js/search.js')

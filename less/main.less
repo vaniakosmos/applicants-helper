@@ -1,15 +1,30 @@
-@main: #f0f0f0;
+@main: #e4e4e4;
 
 body {
     padding: 50px;
     font: 16px arial, sans-serif;
-    background: lighten(@main, 10%);
+    background: darken(@main, 50%);
 }
 
 a {
-  color: #00B7FF;
+    color: black;
 }
 
+h1, h2, h3 {
+    text-align: center;
+    &::first-letter {
+        text-transform: capitalize;
+    }
+}
+
+strong {
+    text-transform: uppercase;
+}
+
+.container {
+    margin: auto;
+    width: 70%;
+}
 
 .card-like {
     border-radius: 3px;
@@ -26,111 +41,56 @@ a {
     padding: 20px;
     .shadow(3px);
     margin-bottom: 10px;
-}
-
-.container {
-    margin: auto;
-    width: 70%;
-    @height: 50px;
-
-    #search-result .card {
-        margin-top: 20px;
-        a {
-            .card-like;
-            display: block;
-            text-decoration: none;
-            padding: 10px;
-            font: inherit;
-            color: darken(@main, 80%);
-
-            &:hover {
-                background: darken(@main, 10%);
-            }
-        }
-    }
-
-    .search-box {
-        .search-container {
-            width: 79%;
-            display: inline-block;
-            vertical-align: middle;
-            white-space: nowrap;
-            position: relative;
-            margin-right: 5px;
-
-            .icon {
-                position: absolute;
-                margin-left: 20px;
-                margin-top: 15px;
-                z-index: 1;
-                color: darken(@main, 80%);
-            }
-
-            .setStuff {
-                outline: none;
-                background: lighten(@main, 20%);
-            }
-
-            input {
-                .card-like;
-                background: lighten(@main, 3%);
-                width: 100%;
-                height: @height;
-                border: none;
-                font-size: 10pt;
-                color: darken(@main, 80%);
-                padding-left: 50px;
-                transition: width .2s ease, box-shadow .3s ease, background .3s ease;
-
-                &:focus, &:active, &:not(:placeholder-shown) {
-                    .setStuff();
-                }
-            }
-
-            &:hover {
-                input {
-                    .setStuff()
-                }
-            }
-        }
-
-        button {
-            .card-like;
-            background: darken(@main, 10%);
-            width: 19%;
-            height: @height;
-            border: none;
-            font-size: 0.9em;
-            vertical-align: middle;
-            color: #000000;
-
-            &:hover {
-                background: darken(@main, 20%);
-            }
-
-            &:focus {
-                outline: none;
-            }
-
-            &:active {
-                background: darken(@main, 30%);
-            }
-        }
-    }
-}
-
-.table-container {
     overflow-x: auto;
-    #applications {
-        width: 100%;
-        border-collapse: collapse;
-        th, td {
-            border: 1px solid darken(@main, 50%);
-            padding: 10px;
-        }
-        tbody tr:hover {
-            background: darken(@main, 5%);
-        }
+}
+
+.card:empty {
+    display: none;
+}
+
+.card-block-inline {
+    .card-like;
+    text-decoration: none;
+    font: inherit;
+    color: black;
+    background: darken(@main, 5%);
+    transition: box-shadow 0.2s, top 0.2s;
+    &:hover {
+        position: relative;
+        top: -2px;
+        .shadow(2px);
+    }
+
+}
+
+.card-links-container {
+    margin-top: 20px;
+    a {
+        .card-block-inline;
+        display: block;
+        padding: 10px;
+        margin: 5px 0 5px;
     }
 }
 
+.button-radios {
+    margin-top: 10px;
+
+    input[type=radio] {
+        display: none;
+
+        &:checked + label {
+            background: darken(@main, 50%);
+            color: white;
+        }
+    }
+
+    label {
+        cursor: pointer;
+        padding: 5px;
+
+        &:hover {
+            background: darken(@main, 10%);
+        }
+    }
+}

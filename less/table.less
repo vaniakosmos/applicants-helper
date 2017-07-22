@@ -1,0 +1,51 @@
+@import (reference) "main";
+
+
+.card-table-container() {
+    .card;
+    padding: 0;
+    border-radius: 3px;
+    background: @main;
+    overflow-x: auto;
+}
+
+.card-table {
+    .card-table-container;
+    @dark: darken(@main, 70%);
+    border-collapse: collapse;
+    width: 100%;
+
+    thead {
+        th:first-child {
+            border-radius: 3px 0 0 0;
+        }
+        th:last-child {
+            border-radius: 0 3px 0 0;
+        }
+        background: @dark;
+        color: white;
+        th:not(:last-child) {
+            border-right: 1px dotted darken(@main, 50%);;
+        }
+    }
+
+    th, td {
+        padding: 10px;
+    }
+
+    tbody {
+        tr:not(:last-child) {
+            border-bottom: 2px solid @dark;
+        }
+        td {
+            text-align: center;
+
+            &:first-child {
+                text-align: left;
+            }
+            &:not(:last-child) {
+                border-right: 1px dotted @dark;
+            }
+        }
+    }
+}

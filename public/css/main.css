@@ -1,119 +1,95 @@
 body {
   padding: 50px;
   font: 16px arial, sans-serif;
-  background: #ffffff;
+  background: #656565;
 }
 a {
-  color: #00B7FF;
+  color: black;
 }
-.card-like {
-  border-radius: 3px;
-  padding: 3px;
-  background: #f0f0f0;
+h1,
+h2,
+h3 {
+  text-align: center;
 }
-.card {
-  border-radius: 3px;
-  padding: 3px;
-  background: #f0f0f0;
-  padding: 20px;
-  box-shadow: 0 5.4px 9px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
-  margin-bottom: 10px;
+h1::first-letter,
+h2::first-letter,
+h3::first-letter {
+  text-transform: capitalize;
+}
+strong {
+  text-transform: uppercase;
 }
 .container {
   margin: auto;
   width: 70%;
 }
-.container #search-result .card {
-  margin-top: 20px;
-}
-.container #search-result .card a {
+.card-like {
   border-radius: 3px;
   padding: 3px;
-  background: #f0f0f0;
-  display: block;
-  text-decoration: none;
-  padding: 10px;
-  font: inherit;
-  color: #242424;
+  background: #e4e4e4;
 }
-.container #search-result .card a:hover {
-  background: #d7d7d7;
-}
-.container .search-box .search-container {
-  width: 79%;
-  display: inline-block;
-  vertical-align: middle;
-  white-space: nowrap;
-  position: relative;
-  margin-right: 5px;
-}
-.container .search-box .search-container .icon {
-  position: absolute;
-  margin-left: 20px;
-  margin-top: 15px;
-  z-index: 1;
-  color: #242424;
-}
-.container .search-box .search-container .setStuff {
-  outline: none;
-  background: #ffffff;
-}
-.container .search-box .search-container input {
+.card {
   border-radius: 3px;
   padding: 3px;
-  background: #f0f0f0;
-  background: #f8f8f8;
-  width: 100%;
-  height: 50px;
-  border: none;
-  font-size: 10pt;
-  color: #242424;
-  padding-left: 50px;
-  transition: width 0.2s ease, box-shadow 0.3s ease, background 0.3s ease;
-}
-.container .search-box .search-container input:focus,
-.container .search-box .search-container input:active,
-.container .search-box .search-container input:not(:placeholder-shown) {
-  outline: none;
-  background: #ffffff;
-}
-.container .search-box .search-container:hover input {
-  outline: none;
-  background: #ffffff;
-}
-.container .search-box button {
-  border-radius: 3px;
-  padding: 3px;
-  background: #f0f0f0;
-  background: #d7d7d7;
-  width: 19%;
-  height: 50px;
-  border: none;
-  font-size: 0.9em;
-  vertical-align: middle;
-  color: #000000;
-}
-.container .search-box button:hover {
-  background: #bdbdbd;
-}
-.container .search-box button:focus {
-  outline: none;
-}
-.container .search-box button:active {
-  background: #a3a3a3;
-}
-.table-container {
+  background: #e4e4e4;
+  padding: 20px;
+  box-shadow: 0 5.4px 9px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
+  margin-bottom: 10px;
   overflow-x: auto;
 }
-.table-container #applications {
-  width: 100%;
-  border-collapse: collapse;
+.card:empty {
+  display: none;
 }
-.table-container #applications th,
-.table-container #applications td {
-  border: 1px solid #717171;
+.card-block-inline {
+  border-radius: 3px;
+  padding: 3px;
+  background: #e4e4e4;
+  text-decoration: none;
+  font: inherit;
+  color: black;
+  background: #d7d7d7;
+  transition: box-shadow 0.2s, top 0.2s;
+}
+.card-block-inline:hover {
+  position: relative;
+  top: -2px;
+  box-shadow: 0 3.6px 6px rgba(0, 0, 0, 0.19), 0 2px 2px rgba(0, 0, 0, 0.23);
+}
+.card-links-container {
+  margin-top: 20px;
+}
+.card-links-container a {
+  border-radius: 3px;
+  padding: 3px;
+  background: #e4e4e4;
+  text-decoration: none;
+  font: inherit;
+  color: black;
+  background: #d7d7d7;
+  transition: box-shadow 0.2s, top 0.2s;
+  display: block;
   padding: 10px;
+  margin: 5px 0 5px;
 }
-.table-container #applications tbody tr:hover {
-  background: #e3e3e3;
+.card-links-container a:hover {
+  position: relative;
+  top: -2px;
+  box-shadow: 0 3.6px 6px rgba(0, 0, 0, 0.19), 0 2px 2px rgba(0, 0, 0, 0.23);
+}
+.button-radios {
+  margin-top: 10px;
+}
+.button-radios input[type=radio] {
+  display: none;
+}
+.button-radios input[type=radio]:checked + label {
+  background: #656565;
+  color: white;
+}
+.button-radios label {
+  cursor: pointer;
+  padding: 5px;
+}
+.button-radios label:hover {
+  background: #cbcbcb;
 }
