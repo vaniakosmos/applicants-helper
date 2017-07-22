@@ -7,17 +7,18 @@ const mongoose = require('mongoose'),
  * @property {ObjectId} _id
  * @property {String} name
  * @property {String} slug
+ * @property {ObjectId} appliedSpec
  * @property {ObjectId[]} applications
  */
 const applicantSchema = new Schema({
     name: {type: String, required: true, max: 100, trim: true},
     trName: {type: String, required: true, max: 100, trim: true},
     slug: {type: String, required: true, max: 100, trim: true},
+    appliedSpec: {type: ObjectId, ref: 'Spec'},
     applications: [{type: ObjectId, ref: 'Application'}],
 });
 
 applicantSchema.virtual('url').get(function () {
-    // return `/applicants/${this._id}`
     return `/applicants/${this.slug}`
 });
 
