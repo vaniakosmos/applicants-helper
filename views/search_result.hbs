@@ -25,11 +25,9 @@
 <script id="search-specs-template" type="text/x-handlebars-template">
     {{#each specs}}
         <a href="{{url}}">
-            {{name}}
-            <ul>
-                <li>Form: {{form}}</li>
-                <li>Level: {{level}}</li>
-            </ul>
+            <strong>{{name}}</strong>
+            <br>
+            <small>{{level}}, {{form}}</small>
         </a>
     {{else}}
         (ﾉ´･ω･)ﾉ ﾐ ┸━┸

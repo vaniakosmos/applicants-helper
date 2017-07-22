@@ -1,22 +1,21 @@
 extends layouts/main
 
+
+block title
+    | Список університетів
+
+
 block head
 
 
 block content
-    h1 Universities
+    div.card
+        h1 Список університетів
 
-    div#search
-        //- todo
-
-    div#univs
+    div#univs.card.card-links-container
         - var univs = locals.univs
         each univ in univs
-            div
-                a(href=univ.url) #{univ.name}
-                |
-                |
-                a(href=univ.oUrl) (original)
+            a(href=univ.url)= univ.name
 
 
 block scripts

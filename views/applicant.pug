@@ -1,48 +1,49 @@
 extends layouts/main
 
+
+block title
+    - var {applicant, applications} = locals
+    | #{applicant.name}
+
+
 block head
+    link(rel='stylesheet' href='/css/table.min.css')
 
 
 block content
-    - var {applicant, applications} = locals
-    .container
-        .card
-            h1 Applicant info
-            h3= applicant.name
+    div.card
+        h1= applicant.name
 
-        .card.table-container
-            table#applications
-                thead
-                    th Specialization
-                    th Score
-                    th Position
-                    th Actual position
-                    th dz
-                    th lo
-                    th Document
-                tbody
-                    each application in applications
-                        - var spec = application.spec
-                        tr
-                            td
-                                small= spec.specialty
-                                br
-                                a(href=spec.url) #{spec.name}
-                                |
-                                |
-                                a(href=spec.oUrl) (knu.ua)
-                                br
-                                small #{spec.level}, #{spec.form}
-                            td= application.score
-                            td= application.pos
-                            td= application.actualPos
-                            td= spec.dz
-                            td= spec.lo
-                            td
-                                if application.doc
-                                    | +
-                                else
-                                    | -
+    table.card-table
+        thead
+            th Спеціальність
+            th Бал
+            th Позиція
+            th Реальна позиція
+            th(title="Ліцензійний обсяг") ЛО
+            th(title="Державне замовлення") ДЗ
+            th Оригінали
+        tbody
+            each application in applications
+                - var spec = application.spec
+                tr
+                    td
+                        small= spec.specialty
+                        br
+                        strong
+                            a(href=spec.url)= spec.name
+                        br
+                        small #{spec.level}, #{spec.form}
+                    td= application.score
+                    td= application.pos
+                    td= application.actualPos
+                    td= spec.lo
+                    td= spec.dz
+                    td
+                        if application.doc
+                            | +
+                        else
+                            | -
 
 
 block scripts

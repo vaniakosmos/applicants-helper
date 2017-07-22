@@ -1,19 +1,21 @@
 extends layouts/main
 
+
+block title
+    - var {univ, faculties} = locals
+    | #{univ.name}
+
+
 block head
 
 
 block content
-    - var {univ, faculties} = locals
-    h1=univ.name
+    div.card
+        h1= univ.name
 
-    div#faculties
+    div#faculties.card.card-links-container
         each faculty in faculties
-            div
-                a(href=faculty.url) #{faculty.name}
-                |
-                |
-                a(href=faculty.oUrl) (original)
+            a(href=faculty.url)= faculty.name
 
 
 block scripts

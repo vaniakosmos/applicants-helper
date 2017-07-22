@@ -7,11 +7,18 @@ body {
 }
 
 a {
-    color: #00B7FF;
+    color: black;
 }
 
-h1 {
+h1, h2, h3 {
     text-align: center;
+    &::first-letter {
+        text-transform: capitalize;
+    }
+}
+
+strong {
+    text-transform: uppercase;
 }
 
 .container {
@@ -34,6 +41,7 @@ h1 {
     padding: 20px;
     .shadow(3px);
     margin-bottom: 10px;
+    overflow-x: auto;
 }
 
 .card:empty {
@@ -46,10 +54,13 @@ h1 {
     font: inherit;
     color: black;
     background: darken(@main, 5%);
+    transition: box-shadow 0.2s, top 0.2s;
     &:hover {
-        color: white;
-        background: darken(@main, 50%);
+        position: relative;
+        top: -2px;
+        .shadow(2px);
     }
+
 }
 
 .card-links-container {
@@ -83,19 +94,3 @@ h1 {
         }
     }
 }
-
-.table-container {
-    overflow-x: auto;
-    #applications {
-        width: 100%;
-        border-collapse: collapse;
-        th, td {
-            border: 1px solid darken(@main, 50%);
-            padding: 10px;
-        }
-        tbody tr:hover {
-            background: darken(@main, 5%);
-        }
-    }
-}
-

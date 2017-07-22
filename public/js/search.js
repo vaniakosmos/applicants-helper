@@ -4,12 +4,14 @@ $(document).ready(function () {
     const facultiesTemplate = Handlebars.compile($("#search-faculties-template").html());
     const specsTemplate = Handlebars.compile($("#search-specs-template").html());
 
+    const $input = $('#search');
+
     function search() {
         return $.ajax({
             type: "GET",
             url: "/search",
             data: {
-                search: $("#search").val(),
+                search: $input.val(),
                 type: $('input[name=search-type]:checked').val(),
             },
             beforeSend: function(){
@@ -20,13 +22,30 @@ $(document).ready(function () {
                 $('.loader').hide();
             },
             success: function (result) {
-                const html = chooseTemplate(result.type)(result);
+                const html = mapTemplate(result.type)(result);
                 $('#search-result').html(html);
             }
         });
     }
 
-    function chooseTemplate(type) {
+
+    function mapPlaceholder(type) {
+        switch (type) {
+            case 'dudes':
+                return 'Іванов Іван Іванович...';
+            case 'univs':
+                return "Київський національний університет...";
+            case 'faculties':
+                return "Факультет кібернутики...";
+            case 'specs':
+                return "Землеустрій та кадастр...";
+            default:
+                return "...";
+        }
+    }
+
+
+    function mapTemplate(type) {
         switch (type) {
             case 'dudes':
                 return dudesTemplate;
@@ -46,10 +65,14 @@ $(document).ready(function () {
         return false;
     });
 
-    $("#search").keypress(function (e) {
+    $input.keypress(function (e) {
         if (e.which === 13) {
             search();
             return false;
         }
+    });
+
+    $('input[type=radio]').change(function () {
+        $input.attr('placeholder', mapPlaceholder($(this).val()));
     })
 });

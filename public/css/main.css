@@ -4,10 +4,20 @@ body {
   background: #656565;
 }
 a {
-  color: #00B7FF;
+  color: black;
 }
-h1 {
+h1,
+h2,
+h3 {
   text-align: center;
+}
+h1::first-letter,
+h2::first-letter,
+h3::first-letter {
+  text-transform: capitalize;
+}
+strong {
+  text-transform: uppercase;
 }
 .container {
   margin: auto;
@@ -25,6 +35,7 @@ h1 {
   padding: 20px;
   box-shadow: 0 5.4px 9px rgba(0, 0, 0, 0.19), 0 3px 3px rgba(0, 0, 0, 0.23);
   margin-bottom: 10px;
+  overflow-x: auto;
 }
 .card:empty {
   display: none;
@@ -37,10 +48,12 @@ h1 {
   font: inherit;
   color: black;
   background: #d7d7d7;
+  transition: box-shadow 0.2s, top 0.2s;
 }
 .card-block-inline:hover {
-  color: white;
-  background: #656565;
+  position: relative;
+  top: -2px;
+  box-shadow: 0 3.6px 6px rgba(0, 0, 0, 0.19), 0 2px 2px rgba(0, 0, 0, 0.23);
 }
 .card-links-container {
   margin-top: 20px;
@@ -53,13 +66,15 @@ h1 {
   font: inherit;
   color: black;
   background: #d7d7d7;
+  transition: box-shadow 0.2s, top 0.2s;
   display: block;
   padding: 10px;
   margin: 5px 0 5px;
 }
 .card-links-container a:hover {
-  color: white;
-  background: #656565;
+  position: relative;
+  top: -2px;
+  box-shadow: 0 3.6px 6px rgba(0, 0, 0, 0.19), 0 2px 2px rgba(0, 0, 0, 0.23);
 }
 .button-radios {
   margin-top: 10px;
@@ -77,19 +92,4 @@ h1 {
 }
 .button-radios label:hover {
   background: #cbcbcb;
-}
-.table-container {
-  overflow-x: auto;
-}
-.table-container #applications {
-  width: 100%;
-  border-collapse: collapse;
-}
-.table-container #applications th,
-.table-container #applications td {
-  border: 1px solid #656565;
-  padding: 10px;
-}
-.table-container #applications tbody tr:hover {
-  background: #d7d7d7;
 }

@@ -15,6 +15,10 @@ exports.faculty = function (faculty) {
 };
 
 exports.spec = function (spec) {
+    const lastUpdate = spec.lastUpdate.toLocaleString('uk-UA', {
+        day: '2-digit', year: 'numeric', month: '2-digit',
+        hour: '2-digit', minute:'2-digit'
+    });
     return {
         name: spec.name,
         specialty: spec.specialty,
@@ -22,7 +26,7 @@ exports.spec = function (spec) {
         level: spec.level,
         dz: spec.dz,
         lo: spec.lo,
-        lastUpdate: spec.lastUpdate,
+        lastUpdate: lastUpdate,
         oUrl: spec.oUrl,
         url: spec.url,
     }
