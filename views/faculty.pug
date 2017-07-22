@@ -1,36 +1,44 @@
 extends layouts/main
 
+
+block title
+    - var {univ, faculty, specs} = locals
+    | #{faculty.name}
+
+
 block head
+    link(rel='stylesheet' href='/css/table.min.css')
 
 
 block content
-    - var {univ, faculty, specs} = locals
-    h1= faculty.name
-    h2= univ.name
+    div.card
+        h1= faculty.name
+        h3
+            a(href=univ.url)= univ.name
+        div#info
+            a(href=faculty.oUrl) Оригінальна сторінка факультету
 
-    div#specs
-        table
-            thead
-                th Specialization
-                th Volumes
-                th Last update
-                th links
-            tbody
-                each spec in specs
-                    tr
-                        td
-                            p Name #{spec.name}
-                            p
-                                small
-                                | Spec: #{spec.specialty}
-                                | Form: #{spec.form}, level: #{spec.level}
-                        td lo: #{spec.lo} / dz: #{spec.dz}
-                        td= spec.lastUpdate
-                        td
-                            a(href=spec.url) this
-                            |
-                            |
-                            a(href=spec.oUrl) original
+    table.card-table
+        thead
+            th Спеціальності
+            th(title="Ліцезійний обсяг") ЛО
+            th(title="Державне замовлення") ДЗ
+            th Дата останнього оновлення
+        tbody
+            each spec in specs
+                tr
+                    td
+                        small= spec.specialty
+                        br
+                        strong
+                            a(href=spec.url)= spec.name
+                        br
+                        small #{spec.level}, #{spec.form}
+
+                    td= spec.lo
+                    td= spec.dz
+                    td= spec.lastUpdate
+
 
 
 block scripts

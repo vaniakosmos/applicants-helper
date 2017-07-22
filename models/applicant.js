@@ -6,37 +6,20 @@ const mongoose = require('mongoose'),
  * @typedef {Object} Model.Applicant
  * @property {ObjectId} _id
  * @property {String} name
+ * @property {String} slug
  * @property {ObjectId[]} applications
  */
 const applicantSchema = new Schema({
-    name: String,
-    applications: [{type: ObjectId, ref: 'Application'}]
+    name: {type: String, required: true, max: 100, trim: true},
+    trName: {type: String, required: true, max: 100, trim: true},
+    slug: {type: String, required: true, max: 100, trim: true},
+    applications: [{type: ObjectId, ref: 'Application'}],
 });
+
+applicantSchema.virtual('url').get(function () {
+    // return `/applicants/${this._id}`
+    return `/applicants/${this.slug}`
+});
+
 const Applicant = mongoose.model('Applicant', applicantSchema);
-
-/**
- * @typedef {Object} Model.Application
- * @property {ObjectId} _id
- * @property {ObjectId} spec_id
- * @property {ObjectId} applicant_id
- * @property {Number} pos
- * @property {Number} actualPos
- * @property {float} score
- * @property {Boolean} doc
- * @property {Boolean} changedPos
- */
-const applicationSchema = new Schema({
-    spec_id: {type: ObjectId, ref: 'Spec'},
-    applicant_id: {type: ObjectId, ref: 'Applicant'},
-    pos: Number,
-    actualPos: Number,
-    score: Number,
-    doc: Boolean,
-    changedPos: {type: Boolean, default: false},
-});
-const Application = mongoose.model('Application', applicationSchema);
-
-module.exports = {
-    Applicant: Applicant,
-    Application: Application,
-};
+module.exports = Applicant;
