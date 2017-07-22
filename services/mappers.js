@@ -32,7 +32,19 @@ exports.spec = function (spec) {
     }
 };
 
-exports.application = function (application) {
+exports.application = function (application, spec) {
+    let status;
+    const appliedSpec = application.applicant.appliedSpec;
+    if (spec) {
+        if (application.pos <= spec.dz)
+            status = 'can';
+        else if (application.actualPos <= spec.dz)
+            status = 'almost';
+
+        if (!application.doc && appliedSpec && !appliedSpec.equals(spec._id)) {
+            status = 'else';
+        }
+    }
     return {
         applicant: application.applicant,
         pos: application.pos,
@@ -40,6 +52,7 @@ exports.application = function (application) {
         score: application.score,
         doc: application.doc,
         spec: application.spec,
+        status: status,
     }
 };
 
@@ -47,5 +60,6 @@ exports.applicant = function (applicant) {
     return {
         name: applicant.name,
         url: applicant.url,
+        appliedSpec: applicant.appliedSpec,
     }
 };

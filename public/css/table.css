@@ -30,6 +30,18 @@
 .card-table tbody tr:not(:last-child) {
   border-bottom: 2px solid #323232;
 }
+.card-table tbody tr[data-status="can"] {
+  background: rgba(77, 214, 58, 0.4);
+}
+.card-table tbody tr[data-status="almost"] {
+  background: rgba(77, 214, 58, 0.2);
+}
+.card-table tbody tr[data-status="else"] {
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 7px, rgba(255, 0, 0, 0.2) 7px, rgba(255, 0, 0, 0.2) 14px);
+}
+.card-table tbody tr[data-doc] {
+  background-image: repeating-linear-gradient(-45deg, transparent, transparent 7px, rgba(0, 147, 0, 0.2) 7px, rgba(0, 147, 0, 0.2) 14px);
+}
 .card-table tbody td {
   text-align: center;
 }

@@ -1,6 +1,5 @@
 @import (reference) "main";
 
-
 .card-table-container() {
     .card;
     padding: 0;
@@ -33,10 +32,35 @@
         padding: 10px;
     }
 
+    .stripes(@color1, @color2, @width) {
+        background-image: repeating-linear-gradient(
+                -45deg,
+                @color1,
+                @color1 @width,
+                @color2 @width,
+                @color2 @width * 2
+        );
+    }
+
     tbody {
-        tr:not(:last-child) {
-            border-bottom: 2px solid @dark;
+        tr {
+            &:not(:last-child) {
+                border-bottom: 2px solid @dark;
+            }
+            &[data-status="can"] {
+                background: rgba(77, 214, 58, 0.4);
+            }
+            &[data-status="almost"] {
+                background: rgba(77, 214, 58, 0.2);
+            }
+            &[data-status="else"] {
+                .stripes(transparent, rgba(255, 0, 0, 0.2), 7px);
+            }
+            &[data-doc] {
+                .stripes(transparent, rgba(0, 147, 0, 0.2), 7px);
+            }
         }
+
         td {
             text-align: center;
 
@@ -48,4 +72,5 @@
             }
         }
     }
+
 }

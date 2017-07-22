@@ -38,7 +38,7 @@ block content
         tbody
             each application in applications
                 - var applicant = application.applicant
-                tr
+                tr(data-status=application.status data-doc=application.doc)
                     td
                         a(href=applicant.url)= applicant.name
                     td= application.score

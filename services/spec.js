@@ -22,10 +22,7 @@ exports.getSpec = function (id) {
                 return Applicant
                     .findById(application.applicant)
                     .then(function (applicant) {
-                        application.applicant = {
-                            name: applicant.name,
-                            url: applicant.url,
-                        };
+                        application.applicant = mapper.applicant(applicant);
                         return application
                     })
             });
@@ -37,7 +34,9 @@ exports.getSpec = function (id) {
                         univ: mapper.univ(univ),
                         faculty: mapper.faculty(faculty),
                         spec: mapper.spec(spec),
-                        applications: applications,
+                        applications: applications.map(function (o) {
+                            return mapper.application(o, spec);
+                        }),
                     }
                 })
         })

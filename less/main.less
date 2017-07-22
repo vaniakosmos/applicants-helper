@@ -3,7 +3,7 @@
 body {
     padding: 50px;
     font: 16px arial, sans-serif;
-    background: darken(@main, 50%);
+    background: darken(@main, 60%);
 }
 
 a {
@@ -24,6 +24,39 @@ strong {
 .container {
     margin: auto;
     width: 70%;
+}
+
+/* Large desktop */
+@media (min-width: 1200px) {}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 768px) and (max-width: 979px) {
+    body {
+        font-size: 1.1em;
+    }
+    .container {
+        width: 90%;
+    }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 767px) {
+    body {
+        font-size: 1.2em;
+    }
+    .container {
+        width: 95%;
+    }
+}
+
+/* Landscape phones and down */
+@media (max-width: 480px) {
+    body {
+        font-size: 1.3em;
+    }
+    .container {
+        width: 100%;
+    }
 }
 
 .card-like {

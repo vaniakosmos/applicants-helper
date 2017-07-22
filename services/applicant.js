@@ -33,7 +33,9 @@ exports.getApplicant = function (id) {
                 .then(function (applications) {
                     return {
                         applicant: mapper.applicant(applicant),
-                        applications: applications,
+                        applications: applications.map(function (o) {
+                            return mapper.application(o, o.spec)
+                        }),
                     }
                 })
         })
