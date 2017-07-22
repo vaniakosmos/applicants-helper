@@ -1,37 +1,38 @@
 extends layouts/main
 
 block head
-        link(rel='stylesheet' href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
-        link(rel='stylesheet' href='/css/spinner.css')/
-        include search_result.hbs
+    link(rel='stylesheet' href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css")
+    link(rel='stylesheet' href='/css/spinner.min.css')
+    link(rel='stylesheet' href='/css/search.min.css')
+    include search_result.hbs
 
 block content
-    .container
-        .card
+    div.container
+        div.card
             h1 Abit Helper
-            .search-box
-                .search-container
+            div.search-box
+                div.search-container
                     span.icon: i.fa.fa-search
-                    input(type="search" id="search" placeholder="Іванов Іван Іванович..." value="шев")
-                button#search-btn(type="button") Search
-                form#search-types
+                    input(type="search" id="search" placeholder="Іванов Іван Іванович...")
+                button(type="button")#search-btn Search
+                form#search-types.button-radios
                     input#searchType1(type="radio" name="search-type" value="dudes" checked='checked')
-                    label(for="searchType1") Applicants
+                    label(for="searchType1").card-like Applicants
                     |
                     |
                     input#searchType2(type="radio" name="search-type" value="univs")
-                    label(for="searchType2") Universities
+                    label(for="searchType2").card-like Universities
                     |
                     |
                     input#searchType3(type="radio" name="search-type" value="faculties")
-                    label(for="searchType3") Faculties
+                    label(for="searchType3").card-like Faculties
                     |
                     |
                     input#searchType4(type="radio" name="search-type" value="specs")
-                    label(for="searchType4") Specializations
+                    label(for="searchType4").card-like Specializations
 
-        #search-result
-        .loader(style="display: none;")
+        div#search-result.card.card-links-container
+        div.loader(style="display: none;")
             div.sk-circle
                 div.sk-circle1.sk-child
                 div.sk-circle2.sk-child

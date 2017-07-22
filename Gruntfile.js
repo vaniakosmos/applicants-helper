@@ -1,12 +1,11 @@
-module.exports = function(grunt){
-
+module.exports = function (grunt) {
     // load plugins
     [
         'grunt-contrib-less',
         'grunt-contrib-uglify',
         'grunt-contrib-cssmin',
         'grunt-hashres',
-    ].forEach(function(task){
+    ].forEach(function (task) {
         grunt.loadNpmTasks(task);
     });
 
@@ -16,16 +15,19 @@ module.exports = function(grunt){
             development: {
                 options: {
                     customFunctions: {
-                        static: function(lessObject, name) {
+                        static: function (lessObject, name) {
                             const realUrl = require('./lib/static.js').map(name.value);
                             return `url("${realUrl}")`;
                         }
-                    }
+                    },
                 },
-                files: {
-                    'public/css/main.css': 'less/main.less',
-                    'public/css/api.css': 'less/api.less',
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'less',
+                    src: ['*.less'],
+                    dest: 'public/css',
+                    ext: '.css',
+                }]
             }
         },
         uglify: {
@@ -38,10 +40,13 @@ module.exports = function(grunt){
         },
         cssmin: {
             target: {
-                files: {
-                    'public/css/api.min.css': ['public/css/api.css'],
-                    'public/css/main.min.css': ['public/css/main.css'],
-                }
+                files: [{
+                    expand: true,
+                    cwd: 'public/css',
+                    src: ['*.css', '!*.min.css'],
+                    dest: 'public/css',
+                    ext: '.min.css'
+                }]
             },
         },
         hashres: {

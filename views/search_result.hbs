@@ -1,45 +1,37 @@
 <script id="search-dudes-template" type="text/x-handlebars-template">
-    <div class="card">
-        {{#each applicants}}
-            <a href="{{url}}">{{name}}</a>
-        {{else}}
-            (╯°□°）╯︵ ┻━┻
-        {{/each}}
-    </div>
+    {{#each applicants}}
+        <a href="{{url}}">{{name}}</a>
+    {{else}}
+        (╯°□°）╯︵ ┻━┻
+    {{/each}}
 </script>
 
 <script id="search-univs-template" type="text/x-handlebars-template">
-    <div class="card">
-        {{#each univs}}
-            <a href="{{url}}">{{name}}</a>
-        {{else}}
-            (┛◉Д◉)┛彡┻━┻
-        {{/each}}
-    </div>
+    {{#each univs}}
+        <a href="{{url}}">{{name}}</a>
+    {{else}}
+        (┛◉Д◉)┛彡┻━┻
+    {{/each}}
 </script>
 
 <script id="search-faculties-template" type="text/x-handlebars-template">
-    <div class="card">
-        {{#each faculties}}
-            <a href="{{url}}">{{name}}</a>
-        {{else}}
-            (╯ರ ~ ರ）╯︵ ┻━┻
-        {{/each}}
-    </div>
+    {{#each faculties}}
+        <a href="{{url}}">{{name}}</a>
+    {{else}}
+        (╯ರ ~ ರ）╯︵ ┻━┻
+    {{/each}}
 </script>
 
 <script id="search-specs-template" type="text/x-handlebars-template">
-    <div class="card">
-        {{#each specs}}
-            <a href="{{url}}">
-                {{name}}
-                <ul>
-                    <li>Form: {{form}}</li>
-                    <li>Level: {{level}}</li>
-                </ul>
-            </a>
-        {{else}}
-            (ﾉ´･ω･)ﾉ ﾐ ┸━┸
-        {{/each}}
-    </div>
+    {{#each specs}}
+        <a href="{{url}}">
+            {{name}}
+            <ul>
+                <li>Form: {{form}}</li>
+                <li>Level: {{level}}</li>
+            </ul>
+        </a>
+    {{else}}
+        (ﾉ´･ω･)ﾉ ﾐ ┸━┸
+    {{/each}}
 </script>

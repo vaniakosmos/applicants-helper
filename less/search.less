@@ -1,0 +1,72 @@
+@import (reference) "main";
+
+@height: 50px;
+
+.search-box {
+    .search-container {
+        width: 79%;
+        display: inline-block;
+        vertical-align: middle;
+        white-space: nowrap;
+        position: relative;
+        margin-right: 5px;
+
+        .icon {
+            position: absolute;
+            margin-left: 20px;
+            margin-top: 15px;
+            z-index: 1;
+            color: darken(@main, 80%);
+        }
+
+        .setStuff() {
+            outline: none;
+            background: lighten(@main, 20%);
+        }
+
+        input {
+            .card-like;
+            background: lighten(@main, 6%);
+            width: 100%;
+            height: @height;
+            border: none;
+            font-size: 10pt;
+            color: darken(@main, 80%);
+            padding-left: 50px;
+            transition: width .2s ease, box-shadow .3s ease, background .3s ease;
+
+            &:focus, &:active, &:not(:placeholder-shown) {
+                .setStuff();
+            }
+        }
+
+        &:hover {
+            input {
+                .setStuff()
+            }
+        }
+    }
+
+    button {
+        .card-like;
+        background: darken(@main, 10%);
+        width: 19%;
+        height: @height;
+        border: none;
+        font-size: 0.9em;
+        vertical-align: middle;
+        color: #000000;
+
+        &:hover {
+            background: darken(@main, 20%);
+        }
+
+        &:focus {
+            outline: none;
+        }
+
+        &:active {
+            background: darken(@main, 30%);
+        }
+    }
+}

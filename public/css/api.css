@@ -21,12 +21,6 @@ body {
 .endpoints .verb.DELETE {
   color: #ce1000;
 }
-.card {
-  border-radius: 3px;
-  padding: 20px;
-  background: #e2e1e0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
 .left {
   position: fixed;
   box-shadow: 9px 9px 30px 0 rgba(27, 196, 252, 0.3), -9px -9px 30px 0 rgba(255, 165, 0, 0.3), 3px 3px 10px 0 rgba(27, 196, 252, 0.6), -3px -3px 10px 0 rgba(255, 168, 0, 0.6);

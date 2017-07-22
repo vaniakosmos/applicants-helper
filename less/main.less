@@ -1,15 +1,23 @@
-@main: #f0f0f0;
+@main: #e4e4e4;
 
 body {
     padding: 50px;
     font: 16px arial, sans-serif;
-    background: lighten(@main, 10%);
+    background: darken(@main, 50%);
 }
 
 a {
-  color: #00B7FF;
+    color: #00B7FF;
 }
 
+h1 {
+    text-align: center;
+}
+
+.container {
+    margin: auto;
+    width: 70%;
+}
 
 .card-like {
     border-radius: 3px;
@@ -28,93 +36,50 @@ a {
     margin-bottom: 10px;
 }
 
-.container {
-    margin: auto;
-    width: 70%;
-    @height: 50px;
+.card:empty {
+    display: none;
+}
 
-    #search-result .card {
-        margin-top: 20px;
-        a {
-            .card-like;
-            display: block;
-            text-decoration: none;
-            padding: 10px;
-            font: inherit;
-            color: darken(@main, 80%);
+.card-block-inline {
+    .card-like;
+    text-decoration: none;
+    font: inherit;
+    color: black;
+    background: darken(@main, 5%);
+    &:hover {
+        color: white;
+        background: darken(@main, 50%);
+    }
+}
 
-            &:hover {
-                background: darken(@main, 10%);
-            }
+.card-links-container {
+    margin-top: 20px;
+    a {
+        .card-block-inline;
+        display: block;
+        padding: 10px;
+        margin: 5px 0 5px;
+    }
+}
+
+.button-radios {
+    margin-top: 10px;
+
+    input[type=radio] {
+        display: none;
+
+        &:checked + label {
+            background: darken(@main, 50%);
+            color: white;
         }
     }
 
-    .search-box {
-        .search-container {
-            width: 79%;
-            display: inline-block;
-            vertical-align: middle;
-            white-space: nowrap;
-            position: relative;
-            margin-right: 5px;
+    label {
+        cursor: pointer;
+        padding: 5px;
 
-            .icon {
-                position: absolute;
-                margin-left: 20px;
-                margin-top: 15px;
-                z-index: 1;
-                color: darken(@main, 80%);
-            }
-
-            .setStuff {
-                outline: none;
-                background: lighten(@main, 20%);
-            }
-
-            input {
-                .card-like;
-                background: lighten(@main, 3%);
-                width: 100%;
-                height: @height;
-                border: none;
-                font-size: 10pt;
-                color: darken(@main, 80%);
-                padding-left: 50px;
-                transition: width .2s ease, box-shadow .3s ease, background .3s ease;
-
-                &:focus, &:active, &:not(:placeholder-shown) {
-                    .setStuff();
-                }
-            }
-
-            &:hover {
-                input {
-                    .setStuff()
-                }
-            }
-        }
-
-        button {
-            .card-like;
+        &:hover {
             background: darken(@main, 10%);
-            width: 19%;
-            height: @height;
-            border: none;
-            font-size: 0.9em;
-            vertical-align: middle;
-            color: #000000;
-
-            &:hover {
-                background: darken(@main, 20%);
-            }
-
-            &:focus {
-                outline: none;
-            }
-
-            &:active {
-                background: darken(@main, 30%);
-            }
         }
     }
 }
