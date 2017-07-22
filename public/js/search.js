@@ -12,6 +12,13 @@ $(document).ready(function () {
                 search: $("#search").val(),
                 type: $('input[name=search-type]:checked').val(),
             },
+            beforeSend: function(){
+                $('#search-result').html('');
+                $('.loader').show();
+            },
+            complete: function(){
+                $('.loader').hide();
+            },
             success: function (result) {
                 const html = chooseTemplate(result.type)(result);
                 $('#search-result').html(html);
