@@ -5,9 +5,12 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const handlebars = require('express-handlebars');
+const session = require('express-session');
 
+const config = require('./config/default');
 const database = require('./lib/database');
 const indexRouter = require('./routes/index');
+const adminRouter = require('./routes/admin');
 
 
 const app = express();
@@ -16,12 +19,18 @@ const app = express();
 app.set('view engine', 'pug');
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(cookieParser());
+app.use(session({
+    secret: config.session.secret,
+    resave: false,
+    saveUninitialized: false,
+}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/admin', adminRouter);
 
 
 // catch 404 and forward to error handler

@@ -4,18 +4,19 @@ extends ../layouts/admin
 block content
     .card
         div.handlers
-            form(method='post' action='populate')
+            form(method='post' action='populate')#populate
                 input(type='submit' value='populate')
 
-            form(method='post' action='update')
+            form(method='post' action='update')#update
                 input(type='submit' value='update')
 
-            form(method='post' action='dropdatabase')
+            form(method='post' action='dropdatabase')#drop
                 input(type='submit' value='drop')
 
-            form(method='post' action='logout')
+            form(method='post' action='logout')#logout
                 input(type='submit' value='logout')
-        div.timers
+    div.card#message
 
 
 block scripts
+    script(src='/js/admin.js')

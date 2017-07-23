@@ -35,3 +35,13 @@ exports.validateId = function(id) {
         return id
     })
 };
+
+exports.isAuth = function (req, res, next) {
+    if (req.session.authorized) {
+        next()
+    }
+    else {
+        console.log('attempt to access restricted route');
+        next('route')
+    }
+};
