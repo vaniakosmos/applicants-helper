@@ -1,0 +1,66 @@
+.handlers {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.handlers input {
+  position: relative;
+  outline: none;
+  background: #ff684d;
+  border: 0;
+  border-radius: 3px;
+  padding: 5px;
+  width: 200px;
+  height: 150px;
+  margin-top: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 1.5em;
+  text-align: center;
+  top: 0;
+  box-shadow: 0 6px #e62300;
+  transition: top 0.2s ease, box-shadow 0.2s ease;
+}
+.handlers input:active {
+  top: 6px;
+  box-shadow: 0 0 #e62300;
+}
+#from-wrap {
+  display: block;
+  text-align: center;
+}
+#login-form {
+  display: table;
+  margin: 5px auto;
+  text-align: left;
+}
+#login-form p {
+  display: table-row;
+}
+#login-form label {
+  float: left;
+}
+#login-form label,
+#login-form input {
+  padding: 5px;
+}
+#login-form input {
+  float: right;
+  outline: none;
+  border: 0;
+  border-radius: 5px;
+  margin: 5px;
+}
+#login-form input[type=submit] {
+  width: 50%;
+}
+#login-form input[type=submit]:hover {
+  background: forestgreen;
+  color: white;
+}
+#error {
+  border-radius: 3px;
+  padding: 3px;
+  color: white;
+  background: #d10000;
+}

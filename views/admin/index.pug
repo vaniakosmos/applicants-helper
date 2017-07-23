@@ -1,0 +1,21 @@
+extends ../layouts/admin
+
+
+block content
+    .card
+        div.handlers
+            form(method='post' action='populate')
+                input(type='submit' value='populate')
+
+            form(method='post' action='update')
+                input(type='submit' value='update')
+
+            form(method='post' action='dropdatabase')
+                input(type='submit' value='drop')
+
+            form(method='post' action='logout')
+                input(type='submit' value='logout')
+        div.timers
+
+
+block scripts

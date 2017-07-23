@@ -1,0 +1,15 @@
+extends ../layouts/admin
+
+
+block content
+    div.card#from-wrap
+        form(method='post')#login-form
+            p
+                label username
+                input(type='text' name='username' value=username)
+            p
+                label password
+                input(type='password' name='password')
+            input(type='submit' value='log in')
+        if error
+            div#error= error
