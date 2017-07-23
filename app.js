@@ -9,6 +9,7 @@ const session = require('express-session');
 
 const config = require('./config/default');
 const database = require('./lib/database');
+const schuduler = require('./lib/scheduler');
 const indexRouter = require('./routes/index');
 const adminRouter = require('./routes/admin');
 
@@ -31,6 +32,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+
+schuduler.scheduleUpdate();
 
 
 // catch 404 and forward to error handler
